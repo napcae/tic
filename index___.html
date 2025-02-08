@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Inner Circle (TIC) – Exclusive Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const referrer = document.getElementById("referrer").value;
+            const message = document.getElementById("message");
+
+            if (!email) {
+                message.innerText = "Email is required.";
+                return;
+            }
+
+            const airtableApiKey = "YOUR_AIRTABLE_API_KEY";
+            const airtableBaseId = "YOUR_AIRTABLE_BASE_ID";
+            const airtableTableName = "Requests";
+
+            const url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`;
+            const data = {
+                fields: {
+                    Email: email,
+                    Referrer: referrer || "N/A",
+                    Timestamp: new Date().toISOString()
+                }
+            };
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${airtableApiKey}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                message.innerText = "✅ Request submitted! We’ll review and notify you.";
+                document.getElementById("signup-form").reset();
+            })
+            .catch(error => {
+                message.innerText = "❌ Error submitting request. Try again.";
+            });
+        }
+    </script>
+</head>
+<body class="bg-black text-white flex flex-col items-center justify-center min-h-screen px-6">
+
+    <!-- Hero Section -->
+    <div class="text-center max-w-2xl animate-fadeIn">
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
+            The Inner Circle (TIC)
+        </h1>
+        <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
+            A private network of founders, investors, and visionaries.
+            <span class="text-gray-500">Access is by invitation only.</span>
+        </p>
+        <button class="mt-6 px-6 py-3 bg-white text-black rounded-full text-lg font-semibold hover:opacity-80 transition">
+            Join The Inner Circle
+        </button>
+    </div>
+
+    <!-- Email Form Section -->
+    <div class="mt-12 bg-gray-900 p-6 rounded-xl shadow-xl max-w-lg w-full animate-fadeIn">
+        <h2 class="text-xl font-semibold text-gray-100 text-center">Apply for Access</h2>
+        <form id="signup-form" class="mt-4 flex flex-col space-y-4" onsubmit="submitForm(event)">
+            <input id="email" type="email" placeholder="Your Email Address"
+                class="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
+            <input id="referrer" type="text" placeholder="Who referred you? (Required)"
+                class="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
+            <button type="submit"
+                class="px-6 py-3 bg-white text-black rounded-full font-semibold hover:opacity-80 transition">
+                Request Access
+            </button>
+        </form>
+        <p id="message" class="mt-3 text-sm text-gray-500 text-center"></p>
+    </div>
+
+    <!-- Social Proof Section -->
+    <div class="mt-16 text-gray-500 text-sm text-center max-w-lg animate-fadeIn">
+        Trusted by top entrepreneurs, investors, and leaders worldwide.
+    </div>
+
+</body>
+</html>
