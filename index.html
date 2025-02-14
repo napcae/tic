@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="bg-gray-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-lg font-bold">The Inner Circle: Saigon</div>
+            <div class="text-lg font-bold" id="site-title">The Inner Circle: Saigon</div>
             <div class="md:hidden">
                 <button id="menu-toggle" class="text-gray-300 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -22,12 +22,20 @@
                 </button>
             </div>
             <div id="menu" class="hidden md:flex md:flex-row flex-col md:items-center">
-                <a href="#apply-form" class="text-gray-300 hover:text-white px-4 py-2">Apply</a>
+                <a href="#apply-form" class="text-gray-300 hover:text-white px-4 py-2" id="apply-link">Apply</a>
+                <button id="language-toggle" class="text-gray-300 hover:text-white px-4 py-2">EN</button>
             </div>
         </div>
     </nav>
     <!-- Main Content -->
     <div class="flex flex-col items-center justify-center min-h-screen px-6 text-center mt-12">
+        <video src=
+
+        “9785924-hd_1920_1080_25fps.mp4”
+
+              className=”absolute z-10 w-auto min-w-full min-h-full max-w-none”></video>
+
+
 
         <!-- Headline -->
         <h1 class="text-5xl font-bold leading-tight">A Hidden Circle of <span class="text-gray-400">Visionaries, Artists & Founders.</span></h1>
@@ -53,7 +61,7 @@
             <label class="block text-left text-gray-400 text-sm mt-4">Your Role/Profession</label>
             <input type="text" name="role" class="w-full p-3 mt-1 bg-gray-800 text-white rounded-lg focus:outline-none" placeholder="Founder, Investor, Designer, etc." required>
 
-            <label class="block text-left text-gray-400 text-sm mt-4">Why Do You Want to Join?</label>
+            <label class="block text-left text-gray-400 text-sm mt-4">Why Do You Want to Join and who referred you?</label>
             <textarea name="reason" class="w-full p-3 mt-1 bg-gray-800 text-white rounded-lg focus:outline-none" rows="3" placeholder="Tell us in a few words..." required></textarea>
 
             <button type="submit" class="mt-6 w-full px-6 py-3 text-lg font-semibold bg-white text-black rounded-full hover:bg-gray-300 transition">Apply Now</button>
@@ -109,6 +117,22 @@
         menuToggle.addEventListener("click", () => {
             menu.classList.toggle("hidden");
             menu.classList.toggle("flex");
+        });
+
+        const languageToggle = document.getElementById("language-toggle");
+        const siteTitle = document.getElementById("site-title");
+        const applyLink = document.getElementById("apply-link");
+
+        languageToggle.addEventListener("click", () => {
+            if (languageToggle.textContent === "EN") {
+                languageToggle.textContent = "VN";
+                siteTitle.textContent = "The Inner Circle: Sài Gòn";
+                applyLink.textContent = "Đăng Ký";
+            } else {
+                languageToggle.textContent = "EN";
+                siteTitle.textContent = "The Inner Circle: Saigon";
+                applyLink.textContent = "Apply";
+            }
         });
     </script>
 </body>

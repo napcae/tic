@@ -1,0 +1,44 @@
+{
+    "en": {
+        "siteTitle": "The Inner Circle: Saigon",
+        "applyLink": "Apply",
+        "themeToggle": "Toggle Theme",
+        "headline": "A Hidden Circle of Visionaries, Artists & Founders.",
+        "subheadline": "An invitation-only network where art, business, and culture converge.",
+        "ctaButton": "Request an Invitation",
+        "socialProof": "If you got this link, someone trusts you with it. Don't waste it.",
+        "signupForm": {
+            "nameLabel": "Your Name",
+            "emailLabel": "Email",
+            "roleLabel": "Your Role/Profession",
+            "reasonLabel": "Why Do You Want to Join and who referred you?",
+            "applyButton": "Apply Now",
+            "successMessage": "Your application has been submitted successfully!"
+        },
+        "footer": {
+            "shareOpportunity": "Know someone who embodies the spirit of TIC? Share this opportunity wisely.",
+            "exclusiveEvents": "Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon."
+        }
+    },
+    "vn": {
+        "siteTitle": "Vòng Tròn Nội Bộ: Sài Gòn",
+        "applyLink": "Đăng Ký",
+        "themeToggle": "Chuyển Đổi Chủ Đề",
+        "headline": "Một Vòng Tròn Ẩn Dấu của Những Nhà Tư Tưởng, Nghệ Sĩ & Nhà Sáng Lập.",
+        "subheadline": "Một mạng lưới chỉ mời, nơi nghệ thuật, kinh doanh và văn hóa giao thoa.",
+        "ctaButton": "Yêu Cầu Một Lời Mời",
+        "socialProof": "Nếu bạn nhận được liên kết này, ai đó tin tưởng bạn với nó. Đừng lãng phí nó.",
+        "signupForm": {
+            "nameLabel": "Tên của bạn",
+            "emailLabel": "Email",
+            "roleLabel": "Vai Trò/Nghề Nghiệp của Bạn",
+            "reasonLabel": "Tại sao bạn muốn tham gia và ai đã giới thiệu bạn?",
+            "applyButton": "Nộp Đơn Ngay",
+            "successMessage": "Đơn đăng ký của bạn đã được gửi thành công!"
+        },
+        "footer": {
+            "shareOpportunity": "Biết ai đó thể hiện tinh thần của TIC? Chia sẻ cơ hội này một cách khôn ngoan.",
+            "exclusiveEvents": "Sự kiện độc quyền. Cơ hội thực sự. Chào mừng đến với Vòng Tròn Nội Bộ: Sài Gòn."
+        }
+    }
+}
