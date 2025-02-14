@@ -8,6 +8,11 @@
     <!-- Pixel Code for https://web-analytics.ai/ -->
 <script defer src="https://web-analytics.ai/pixel/iFfTKWGo3ngjlns4"></script>
 <!-- END Pixel Code -->
+    <style>
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+    </style>
 </head>
 <body class="bg-black text-white font-sans">
     <!-- Navbar -->
@@ -29,25 +34,18 @@
     </nav>
     <!-- Main Content -->
     <div class="flex flex-col items-center justify-center min-h-screen px-6 text-center mt-12">
-        <video src=
-
-        “9785924-hd_1920_1080_25fps.mp4”
-
-              className=”absolute z-10 w-auto min-w-full min-h-full max-w-none”></video>
-
-
-
         <!-- Headline -->
-        <h1 class="text-5xl font-bold leading-tight">A Hidden Circle of <span class="text-gray-400">Visionaries, Artists & Founders.</span></h1>
+        <h1 class="text-5xl font-bold leading-tight" id="headline">A Hidden Circle of <span class="text-gray-400">Visionaries, Artists & Founders.</span></h1>
 
         <!-- Subheadline -->
-        <p class="mt-4 text-lg text-gray-400 max-w-xl">An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.</p>
+        <p class="mt-4 text-lg text-gray-400 max-w-xl" id="subheadline">An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.</p>
 
         <!-- CTA Button -->
-        <a href="#apply-form" class="mt-6 px-6 py-3 text-lg font-semibold bg-white text-black rounded-full hover:bg-gray-300 transition">Request an Invitation</a>
+        <a href="#apply-form" class="mt-6 px-6 py-3 text-lg font-semibold bg-white text-black rounded-full hover:bg-gray-300 transition" id="cta-button">Request an Invitation</a>
 
         <!-- Social Proof -->
-        <p class="mt-6 text-sm text-gray-500">If you got this link, someone trusts you with it. Don't waste it.</p>
+        <p class="text-center mt-6 text-sm text-gray-500 px-4" id="social-proof-1">Know someone who embodies the spirit of TIC? Share this opportunity wisely.</p>
+        <p class="text-center mt-2 text-sm text-gray-500 px-4" id="social-proof-2">Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon.</p>
 
         <!-- Signup Form -->
         <form id="apply-form" class="mt-8 w-full max-w-md bg-gray-900 p-6 rounded-lg">
@@ -69,6 +67,9 @@
 
         <p id="message-box" class="mt-4 text-sm text-green-400 hidden">Your application has been submitted successfully!</p>
         <iframe name="hidden-iframe" style="display:none;"></iframe>
+
+        <video id="background-video" autoplay muted class="absolute z-[-1] w-full h-full" style="object-fit: cover; top: 64px; left: 50%; transform: translate(-50%, 0);"></video>
+        <div class="fixed inset-0 bg-black opacity-75 z-[-1]"></div>
     </div>
 
     <footer class="mt-12">
@@ -128,11 +129,49 @@
                 languageToggle.textContent = "VN";
                 siteTitle.textContent = "The Inner Circle: Sài Gòn";
                 applyLink.textContent = "Đăng Ký";
+                document.getElementById("headline").textContent = "Một Vòng Tròn Ẩn Dấu của Những Nhà Tư Tưởng, Nghệ Sĩ & Nhà Sáng Lập.";
+                document.getElementById("subheadline").textContent = "Một mạng lưới chỉ mời, nơi nghệ thuật, kinh doanh và văn hóa giao thoa.";
+                document.getElementById("cta-button").textContent = "Yêu Cầu Một Lời Mời";
+                document.getElementById("social-proof-1").textContent = "Biết ai đó thể hiện tinh thần của TIC? Chia sẻ cơ hội này một cách khôn ngoan.";
+                document.getElementById("social-proof-2").textContent = "Sự kiện độc quyền. Cơ hội thực sự. Chào mừng đến với Vòng Tròn Nội Bộ: Sài Gòn.";
             } else {
                 languageToggle.textContent = "EN";
                 siteTitle.textContent = "The Inner Circle: Saigon";
                 applyLink.textContent = "Apply";
+                document.getElementById("headline").textContent = "A Hidden Circle of Visionaries, Artists & Founders.";
+                document.getElementById("subheadline").textContent = "An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.";
+                document.getElementById("cta-button").textContent = "Request an Invitation";
+                document.getElementById("social-proof-1").textContent = "Know someone who embodies the spirit of TIC? Share this opportunity wisely.";
+                document.getElementById("social-proof-2").textContent = "Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon.";
             }
+        });
+
+        const videos = [
+            "9785924-hd_1920_1080_25fps.mp4",
+            "13025911_1920_1080_25fps.mp4", // Replace with your actual video file names
+            "13029864_1920_1080_30fps.mp4",
+            "13119325_3840_2160_30fps.mp4"
+        ];
+
+        // Function to shuffle the array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const shuffledVideos = shuffle(videos);
+        let currentVideoIndex = 0;
+
+        const videoElement = document.getElementById("background-video");
+        videoElement.src = shuffledVideos[currentVideoIndex];
+
+        videoElement.addEventListener('ended', () => {
+            currentVideoIndex = (currentVideoIndex + 1) % shuffledVideos.length;
+            videoElement.src = shuffledVideos[currentVideoIndex];
+            videoElement.play();
         });
     </script>
 </body>
