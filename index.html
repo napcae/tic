@@ -207,7 +207,9 @@
 
             videoElement.addEventListener('loadeddata', () => {
                 fadeIn(videoElement);
-                videoElement.play();
+                videoElement.play().catch(error => {
+                    console.log("Video autoplay failed:", error);
+                });
             });
         }
 
@@ -216,9 +218,15 @@
             const videoElement = document.getElementById("background-video");
             videoElement.src = preloadedVideos[currentVideoIndex].src;
 
+            // Add these lines for iOS compatibility
+            videoElement.setAttribute('playsinline', '');
+            videoElement.setAttribute('webkit-playsinline', '');
+
             videoElement.addEventListener('loadeddata', () => {
                 fadeIn(videoElement);
-                videoElement.play();
+                videoElement.play().catch(error => {
+                    console.log("Video autoplay failed:", error);
+                });
             });
 
             // Listen for the end of the video to play the next one
