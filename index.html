@@ -7,19 +7,36 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-white font-sans">
-    <div class="flex flex-col items-center justify-center min-h-screen px-6 text-center">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-lg font-bold">The Inner Circle: Saigon</div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="menu" class="hidden md:flex md:flex-row flex-col md:items-center">
+                <a href="#apply-form" class="text-gray-300 hover:text-white px-4 py-2">Apply</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-6 text-center mt-12">
 
         <!-- Headline -->
-        <h1 class="text-5xl font-bold leading-tight">You Weren’t Supposed to Find This… <span class="text-gray-400">But Now That You Have…</span></h1>
+        <h1 class="text-5xl font-bold leading-tight">A Hidden Circle of <span class="text-gray-400">Visionaries, Artists & Founders.</span></h1>
 
         <!-- Subheadline -->
-        <p class="mt-4 text-lg text-gray-400 max-w-xl">An exclusive network for Saigon’s most ambitious founders, investors, and creators. A hidden door to invite-only events, powerful connections, and business deals before they go public. No ads. No mass invites. Just the right people.</p>
+        <p class="mt-4 text-lg text-gray-400 max-w-xl">An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.</p>
 
         <!-- CTA Button -->
-        <a href="#apply" class="mt-6 px-6 py-3 text-lg font-semibold bg-white text-black rounded-full hover:bg-gray-300 transition">See If You Qualify</a>
+        <a href="#apply-form" class="mt-6 px-6 py-3 text-lg font-semibold bg-white text-black rounded-full hover:bg-gray-300 transition">Request an Invitation</a>
 
         <!-- Social Proof -->
-        <p class="mt-6 text-sm text-gray-500">If you got this link, someone trusts you with it. Don’t waste it.</p>
+        <p class="mt-6 text-sm text-gray-500">If you got this link, someone trusts you with it. Don't waste it.</p>
 
         <!-- Signup Form -->
         <form id="apply-form" class="mt-8 w-full max-w-md bg-gray-900 p-6 rounded-lg">
@@ -40,10 +57,15 @@
         </form>
 
         <p id="message-box" class="mt-4 text-sm text-green-400 hidden">Your application has been submitted successfully!</p>
-        <p class="mt-6 text-sm text-gray-500">Know someone who *should* be here? Careful who you share this with.</p>
-        <p class="mt-2 text-sm text-gray-500">Exclusive events. Real opportunities. Welcome to The Inner Circle Saigon.</p>
         <iframe name="hidden-iframe" style="display:none;"></iframe>
     </div>
+
+    <footer class="mt-12">
+        <p class="text-center mt-6 text-sm text-gray-500">Know someone who embodies the spirit of TIC? Share this opportunity wisely.</p>
+        <p class="text-center mt-2 text-sm text-gray-500">Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon.</p>
+        <!-- <p class="text-center text-gray-500">© 2023 The Inner Circle: Saigon. All rights reserved.</p> -->
+    </footer>
+    <div class="pb-12"></div>
 
     <script>
         document.getElementById("apply-form").addEventListener("submit", function(event) {
@@ -76,6 +98,14 @@
             }).catch(() => {
                 alert("Network error. Please try again.");
             });
+        });
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
         });
     </script>
 </body>
