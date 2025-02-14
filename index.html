@@ -172,11 +172,27 @@
             element.style.opacity = 1;
         }
 
+        // Function to get a random video index
+        function getRandomVideoIndex() {
+            return Math.floor(Math.random() * preloadedVideos.length);
+        }
+
         // Function to play the next video
         function playNextVideo() {
-            currentVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Loop back to the first video
+            // After the first video, load a random video
+            if (currentVideoIndex === 0) {
+                currentVideoIndex = getRandomVideoIndex();
+            } else {
+                currentVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Loop back to the first video
+            }
+
             const videoElement = document.getElementById("background-video");
             videoElement.src = preloadedVideos[currentVideoIndex].src;
+
+            // Preload the next video
+            const nextVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Get the next video index
+            const nextVideo = preloadedVideos[nextVideoIndex]; // Get the next video element
+            nextVideo.load(); // Preload the next video
 
             videoElement.addEventListener('loadeddata', () => {
                 fadeIn(videoElement);
