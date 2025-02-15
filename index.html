@@ -8,6 +8,23 @@
     <!-- Pixel Code for https://web-analytics.ai/ -->
     <script defer src="https://web-analytics.ai/pixel/iFfTKWGo3ngjlns4"></script>
     <!-- END Pixel Code -->
+    <script src="https://swetrix.org/swetrix.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        swetrix.init('eFevfOCfXnRh', {
+          apiURL: 'https://api.t.nettelbeckplatz.de/log',
+        })
+        swetrix.trackViews()
+      })
+    </script>
+
+    <noscript>
+      <img
+        src="https://api.t.nettelbeckplatz.de/log/noscript?pid=eFevfOCfXnRh"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
 </head>
 <body class="bg-black text-white font-sans">
     <!-- Navbar -->
@@ -68,7 +85,7 @@
         <p id="message-box" class="mt-4 text-sm text-green-400 hidden">Your application has been submitted successfully!</p>
         <iframe name="hidden-iframe" style="display:none;"></iframe>
 
-        <div class="absolute inset-0 bg-black opacity-20 z-[-1]"></div>
+        <div class="absolute inset-0 bg-black opacity-15 z-[-1]"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-2]"></div>
         <video id="background-video" autoplay muted playsinline class="absolute z-[-3] w-full h-full" style="object-fit: cover; top: 0; left: 0;">
         </video>
