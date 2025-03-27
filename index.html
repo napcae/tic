@@ -103,9 +103,6 @@
         document.getElementById("apply-form").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent default form submission
 
-            // Trigger the analytics goal
-            analytics.goal('rkoh0bchui1x1jhv');
-
             // Continue with form submission logic...
             const emailInput = document.getElementById("email");
             const emailError = document.getElementById("email-error");
@@ -121,7 +118,7 @@
             // Prepare form data
             const formData = new FormData(event.target);
 
-            fetch("https://hooks.zapier.com/hooks/catch/21624109/2akitff/", {
+            fetch("https://bot.nettelbeckplatz.de/webhook/6da34824-593b-402d-a903-61dfaafe5962", {
                 method: "POST",
                 body: formData,
             }).then(response => {
