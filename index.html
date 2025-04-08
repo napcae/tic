@@ -115,12 +115,20 @@
                     emailError.classList.add("hidden");
                 }
 
-                // Prepare form data
-                const formData = new FormData(event.target);
+                // Prepare form data as JSON
+                const formData = {
+                    name: event.target.name.value,
+                    email: event.target.email.value,
+                    role: event.target.role.value,
+                    reason: event.target.reason.value
+                };
 
                 fetch("https://bot.nettelbeckplatz.de/webhook/6da34824-593b-402d-a903-61dfaafe5962", {
                     method: "POST",
-                    body: formData,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData),
                 }).then(response => {
                     if (response.ok) {
                         document.getElementById("message-box").classList.remove("hidden");
