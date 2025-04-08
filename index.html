@@ -99,123 +99,123 @@
     </footer>
     <div class="pb-12"></div>
 
-    <script>
-        document.getElementById("apply-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
+        <script>
+            document.getElementById("apply-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-            // Continue with form submission logic...
-            const emailInput = document.getElementById("email");
-            const emailError = document.getElementById("email-error");
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                // Continue with form submission logic...
+                const emailInput = document.getElementById("email");
+                const emailError = document.getElementById("email-error");
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (!emailPattern.test(emailInput.value)) {
-                emailError.classList.remove("hidden");
-                return; // Stop execution if email is invalid
-            } else {
-                emailError.classList.add("hidden");
-            }
-
-            // Prepare form data
-            const formData = new FormData(event.target);
-
-            fetch("https://bot.nettelbeckplatz.de/webhook/6da34824-593b-402d-a903-61dfaafe5962", {
-                method: "POST",
-                body: formData,
-            }).then(response => {
-                if (response.ok) {
-                    document.getElementById("message-box").classList.remove("hidden");
-                    event.target.reset();
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.classList.remove("hidden");
+                    return; // Stop execution if email is invalid
                 } else {
-                    alert("Something went wrong. Please try again.");
+                    emailError.classList.add("hidden");
                 }
-            }).catch(() => {
-                alert("Network error. Please try again.");
+
+                // Prepare form data
+                const formData = new FormData(event.target);
+
+                fetch("https://bot.nettelbeckplatz.de/webhook/6da34824-593b-402d-a903-61dfaafe5962", {
+                    method: "POST",
+                    body: formData,
+                }).then(response => {
+                    if (response.ok) {
+                        document.getElementById("message-box").classList.remove("hidden");
+                        event.target.reset();
+                    } else {
+                        alert("Something went wrong. Please try again.");
+                    }
+                }).catch(() => {
+                    alert("Network error. Please try again.");
+                });
             });
-        });
 
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
 
-        menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            menu.classList.toggle("flex");
-        });
+            menuToggle.addEventListener("click", () => {
+                menu.classList.toggle("hidden");
+                menu.classList.toggle("flex");
+            });
 
-        const languageToggle = document.getElementById("language-toggle");
-        const siteTitle = document.getElementById("site-title");
-        const applyLink = document.getElementById("apply-link");
+            const languageToggle = document.getElementById("language-toggle");
+            const siteTitle = document.getElementById("site-title");
+            const applyLink = document.getElementById("apply-link");
 
-        languageToggle.addEventListener("click", () => {
-            if (languageToggle.textContent === "EN") {
-                languageToggle.textContent = "VN";
-                siteTitle.textContent = "The Inner Circle: Sài Gòn";
-                applyLink.textContent = "Đăng Ký";
-                document.getElementById("headline").textContent = "Một Vòng Tròn Ẩn Dấu của Những Nhà Tư Tưởng, Nghệ Sĩ & Nhà Sáng Lập.";
-                document.getElementById("subheadline").textContent = "Một mạng lưới chỉ mời, nơi nghệ thuật, kinh doanh và văn hóa giao thoa.";
-                document.getElementById("cta-button").textContent = "Yêu Cầu Một Lời Mời";
-                document.getElementById("social-proof-1").textContent = "Biết ai đó thể hiện tinh thần của TIC? Chia sẻ cơ hội này một cách khôn ngoan.";
-                document.getElementById("social-proof-2").textContent = "Sự kiện độc quyền. Cơ hội thực sự. Chào mừng đến với Vòng Tròn Nội Bộ: Sài Gòn.";
-            } else {
-                languageToggle.textContent = "EN";
-                siteTitle.textContent = "The Inner Circle: Saigon";
-                applyLink.textContent = "Apply";
-                document.getElementById("headline").textContent = "A Hidden Circle of Visionaries, Artists & Founders.";
-                document.getElementById("subheadline").textContent = "An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.";
-                document.getElementById("cta-button").textContent = "Request an Invitation";
-                document.getElementById("social-proof-1").textContent = "Know someone who embodies the spirit of TIC? Share this opportunity wisely.";
-                document.getElementById("social-proof-2").textContent = "Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon.";
-            }
-        });
+            languageToggle.addEventListener("click", () => {
+                if (languageToggle.textContent === "EN") {
+                    languageToggle.textContent = "VN";
+                    siteTitle.textContent = "The Inner Circle: Sài Gòn";
+                    applyLink.textContent = "Đăng Ký";
+                    document.getElementById("headline").textContent = "Một Vòng Tròn Ẩn Dấu của Những Nhà Tư Tưởng, Nghệ Sĩ & Nhà Sáng Lập.";
+                    document.getElementById("subheadline").textContent = "Một mạng lưới chỉ mời, nơi nghệ thuật, kinh doanh và văn hóa giao thoa.";
+                    document.getElementById("cta-button").textContent = "Yêu Cầu Một Lời Mời";
+                    document.getElementById("social-proof-1").textContent = "Biết ai đó thể hiện tinh thần của TIC? Chia sẻ cơ hội này một cách khôn ngoan.";
+                    document.getElementById("social-proof-2").textContent = "Sự kiện độc quyền. Cơ hội thực sự. Chào mừng đến với Vòng Tròn Nội Bộ: Sài Gòn.";
+                } else {
+                    languageToggle.textContent = "EN";
+                    siteTitle.textContent = "The Inner Circle: Saigon";
+                    applyLink.textContent = "Apply";
+                    document.getElementById("headline").textContent = "A Hidden Circle of Visionaries, Artists & Founders.";
+                    document.getElementById("subheadline").textContent = "An invitation-only network where art, business, and culture converge. Intimate gatherings, curated experiences, and authentic connections await. No mass invites. Just the right people.";
+                    document.getElementById("cta-button").textContent = "Request an Invitation";
+                    document.getElementById("social-proof-1").textContent = "Know someone who embodies the spirit of TIC? Share this opportunity wisely.";
+                    document.getElementById("social-proof-2").textContent = "Exclusive events. Real opportunities. Welcome to The Inner Circle: Saigon.";
+                }
+            });
 
-        const videos = [
-            "vids/13123852_1080_1920_30fps.mp4",
-            "vids/13025911_1920_1080_25fps.mp4",
-            "vids/13029864_1920_1080_30fps.mp4",
-            "vids/13119325_3840_2160_30fps.mp4",
-            "vids/3126484-hd_1920_1080_30fps.mp4",
-            "vids/3850448-hd_1920_1080_24fps.mp4",
-            "vids/6092628-uhd_2160_3840_30fps.mp4",
-            "vids/13118922_3840_2160_24fps.mp4"
-        ];
+            const videos = [
+                "vids/13123852_1080_1920_30fps.mp4",
+                "vids/13025911_1920_1080_25fps.mp4",
+                "vids/13029864_1920_1080_30fps.mp4",
+                "vids/13119325_3840_2160_30fps.mp4",
+                "vids/3126484-hd_1920_1080_30fps.mp4",
+                "vids/3850448-hd_1920_1080_24fps.mp4",
+                "vids/6092628-uhd_2160_3840_30fps.mp4",
+                "vids/13118922_3840_2160_24fps.mp4"
+            ];
 
-        // Preload videos
-        const preloadedVideos = videos.map(videoSrc => {
-            const video = document.createElement('video');
-            video.src = videoSrc;
-            video.preload = 'auto'; // Preload the video
-            return video;
-        });
+            // Preload videos
+            const preloadedVideos = videos.map(videoSrc => {
+                const video = document.createElement('video');
+                video.src = videoSrc;
+                video.preload = 'auto'; // Preload the video
+                return video;
+            });
 
-        let currentVideoIndex = 0;
+            let currentVideoIndex = 0;
 
-        // Function to fade in the video
-        function fadeIn(element) {
-            element.style.opacity = 0;
-            element.style.transition = 'opacity 1s';
-            element.style.opacity = 1;
-        }
-
-        // Function to get a random video index
-        function getRandomVideoIndex() {
-            return Math.floor(Math.random() * preloadedVideos.length);
-        }
-
-        // Function to play the next video
-        function playNextVideo() {
-            // After the first video, load a random video
-            if (currentVideoIndex === 0) {
-                currentVideoIndex = getRandomVideoIndex();
-            } else {
-                currentVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Loop back to the first video
+            // Function to fade in the video
+            function fadeIn(element) {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 1s';
+                element.style.opacity = 1;
             }
 
-            const videoElement = document.getElementById("background-video");
-            videoElement.src = preloadedVideos[currentVideoIndex].src;
+            // Function to get a random video index
+            function getRandomVideoIndex() {
+                return Math.floor(Math.random() * preloadedVideos.length);
+            }
 
-            // Preload the next video
-            const nextVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Get the next video index
-            const nextVideo = preloadedVideos[nextVideoIndex]; // Get the next video element
-            nextVideo.load(); // Preload the next video
+            // Function to play the next video
+            function playNextVideo() {
+                // After the first video, load a random video
+                if (currentVideoIndex === 0) {
+                    currentVideoIndex = getRandomVideoIndex();
+                } else {
+                    currentVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Loop back to the first video
+                }
+
+                const videoElement = document.getElementById("background-video");
+                videoElement.src = preloadedVideos[currentVideoIndex].src;
+
+                // Preload the next video
+                const nextVideoIndex = (currentVideoIndex + 1) % preloadedVideos.length; // Get the next video index
+                const nextVideo = preloadedVideos[nextVideoIndex]; // Get the next video element
+                nextVideo.load(); // Preload the next video
 
             videoElement.addEventListener('loadeddata', () => {
                 fadeIn(videoElement);
